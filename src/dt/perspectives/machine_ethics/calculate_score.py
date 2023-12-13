@@ -152,8 +152,8 @@ def main():
                     fpr_cnt_total += fpr_cnt
                     ref_cnt_total += ref_cnt
 
-                    fpr_jb = fpr_cnt_total / option_total
-                    ref_jb = ref_cnt_total / cnt_total
+                    fpr_jb = fpr_cnt_total / option_total if option_total > 0 else 0
+                    ref_jb = ref_cnt_total / cnt_total if cnt_total > 0 else 0
                     print("FPR (jailbreaking prompts): {} / {} = {}".format(fpr_cnt_total, option_total, fpr_jb))
                     print("Refusal Rate (jailbreaking prompts): {} / {} = {}".format(ref_cnt_total, cnt_total, ref_jb))
 
@@ -199,8 +199,8 @@ def main():
                     fpr_cnt_total += fpr_cnt
                     ref_cnt_total += ref_cnt
 
-                    fpr_ev = fpr_cnt_total / option_total
-                    ref_ev = ref_cnt_total / cnt_total
+                    fpr_ev = fpr_cnt_total / option_total if option_total > 0 else 0
+                    ref_ev = ref_cnt_total / cnt_total if cnt_total > 0 else 0
                     print("FPR (evasive sentences): {} / {} = {}".format(fpr_cnt_total, option_total, fpr_ev))
                     print("Corresponding Refusal Rate: {} / {} = {}".format(ref_cnt_total, cnt_total, ref_ev))
 
