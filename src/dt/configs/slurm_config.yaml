@@ -13,18 +13,20 @@ hydra:
     # @package hydra.launcher
     _target_: hydra_plugins.hydra_submitit_launcher.submitit_launcher.SlurmLauncher
     submitit_folder: ./logs/${hydra.sweep.dir}/.submitit/%j
-    timeout_min: 720
-    cpus_per_task: 12
-    gpus_per_task: 1
+    timeout_min: 1400 
+    cpus_per_task: 8
+    # gpus_per_task: 1
     tasks_per_node: 1
-    mem_gb: 62
+    mem_gb: 80
     nodes: 1
-    gres: gpu:1
-    name: ${hydra.job.name}
-    partition: compute
+    gres: gpu:h100:1
+    partition: gpu
+    # cluster: aces
+#    name: dt-${model_config.model}-${hydra.job.name}
+    name: dt-${hydra.job.name}
     comment: null
     signal_delay_s: 120
     max_num_timeout: 0
-    additional_parameters: { }
+    additional_parameters: { cluster: aces }
     array_parallelism: 256
     setup: null
